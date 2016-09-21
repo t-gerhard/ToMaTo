@@ -8,25 +8,23 @@ from lib.upload_download import upload, upload_and_use_rextfv
 def progname_short():
 	return "rextfv-packetmanager"
 
-
-def retryThreeTimes(func):
-	def call(*args, **kwargs):
-		try:
-			res = func(*args, **kwargs)
-			assert res is not None
-			return res
-		except:
-			traceback.print_exc()
-			try:
-				print "Don't worry, I'll retry."
-				res = func(*args, **kwargs)
-				assert res is not None
-				return res
-			except:
-				traceback.print_exc()
-				print "Don't worry, I'll retry."
-				return func(*args, **kwargs)
-	return call
+def retryNTimes(n):
+	def _call(func):
+		def call(*args, **kwargs):
+			maxErrCnt = n
+			while maxErrCnt > 0:
+				try:
+					res = func(*args, **kwargs)
+					assert res is not None
+					return res
+				except:
+					maxErrCnt -= 1
+					if maxErrCnt == 0:
+						raise
+					else:
+						print "An error occurred. I'll retry (%d)" % maxErrCnt
+		return call
+	return _call
 
 
 class DefaultDebugger:
@@ -226,13 +224,18 @@ class TestTopology:
 	def getArchiveResult(self):
 		sleep(3)
 		elinfo = self.api.element_info(self.el_id)
+		errcount = 0
 		while not elinfo["rextfv_run_status"].get("done", False):
-			if not elinfo["rextfv_run_status"]["isAlive"]:
-				print elinfo["rextfv_run_status"]
-				return elinfo["rextfv_run_status"].get("custom", None)
+			try:
+				if not elinfo["rextfv_run_status"]["isAlive"]:
+					return elinfo["rextfv_run_status"].get("custom", None)
+			except KeyError:
+				errcount += 1
+				if errcount > 3:
+					return None
 			sleep(3)
 			elinfo = self.api.element_info(self.el_id)
-		return elinfo["rextfv_run_status"]["custom"]
+		return elinfo["rextfv_run_status"].get("custom", None)
 
 
 ###### Build the archive
@@ -298,22 +301,22 @@ class GetPacketArchive(object):
 						    DISTRO="ubuntu_1304"
 						    ;;
 						  Ubuntu*13.10*)
-						    DISTRO="ubuntu_1210"
+						    DISTRO="ubuntu_1310"
 						    ;;
 						  Ubuntu*14.04*)
-						    DISTRO="ubuntu_1304"
+						    DISTRO="ubuntu_1404"
 						    ;;
 						  Ubuntu*14.10*)
-						    DISTRO="ubuntu_1210"
+						    DISTRO="ubuntu_1410"
 						    ;;
 						  Ubuntu*15.04*)
-						    DISTRO="ubuntu_1304"
+						    DISTRO="ubuntu_1504"
 						    ;;
 						  Ubuntu*15.10*)
-						    DISTRO="ubuntu_1210"
+						    DISTRO="ubuntu_1510"
 						    ;;
 						  Ubuntu*16.04*)
-						    DISTRO="ubuntu_1304"
+						    DISTRO="ubuntu_1604"
 						    ;;
 						  *)
 						    DISTRO="UNKNOWN"
@@ -398,7 +401,7 @@ class GetPacketArchive(object):
 		self._writeAdditionalContents()
 		return self._createArchiveFile()
 
-	@retryThreeTimes
+	@retryNTimes(3)
 	def uploadAndRun(self, test_topology):
 		result_raw = None
 		if not self.archive_filename:
@@ -408,10 +411,10 @@ class GetPacketArchive(object):
 		try:
 			debugger.log(subStep="preparing topology")
 			test_topology.prepare()
-			debugger.log(subStep="uploading archive")
-			test_topology.uploadAndUseArchive(self.archive_filename)
 			debugger.log(subStep="starting topology")
 			test_topology.start()
+			debugger.log(subStep="uploading archive")
+			test_topology.uploadAndUseArchive(self.archive_filename)
 			debugger.log(subStep="waiting for results")
 			result_raw = test_topology.getArchiveResult()
 		except:
