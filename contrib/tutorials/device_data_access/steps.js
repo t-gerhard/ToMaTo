@@ -61,7 +61,7 @@
 					});
 				},
 			text:	'<p class="tutorialExplanation">\
-					Now after the devices started right click on the left device (openvz1) and use <pre>&gt; Executable archive &gt; Upload Archive</pre> to upload and run the archive on your device</p>\
+					Now after the devices started right click on the left device (container1) and use <pre>&gt; Executable archive &gt; Upload Archive</pre> to upload and run the archive on your device</p>\
 <p class="tutorialExplanation">\
 					After the upload, the archive will be automatically executed by running the <i>auto_exec.sh</i> file inside it if the file exists.\
 Executable archives are a good way to run programms on a device. If you want to learn more about them feel free to visite the <i>Executable Archives tutorial</i>.</p>',
@@ -177,9 +177,9 @@ The simulation will create some output on your console and also create data in a
 				return match;
 			},
 			text:	'<p clas s="tutorialExplanation">\
-						You can upload any image to a device of the same technology. You can not use images accross technologies (e.g., you can\'t upload an OpenVZ image to a KVM device, and vice versa).</p>\
+						You can upload any image to a device of the same technology. You can not use images accross technologies (e.g., you can\'t upload a container image to a full-virtualization device, and vice versa).</p>\
 					<p class="tutorialCommand">\
-						Upload your image again to the second device (openvz2).</p>\
+						Upload your image again to the second device (container2).</p>\
 					<p class="tutorialExplanation">\
 					You can skip this step  if a big upload might cause you trouble. Then please run the executable archive on the second device so we can continue the tutorial.</p>\
 					<p class="tutorialExplanation">\
@@ -218,7 +218,7 @@ The simulation will create some output on your console and also create data in a
 			text:	'<p class="tutorialExplanation">\
 						SSH is deactivated by default. In order to use it we have to remote connect to our device (with NoVNC) and run <i>ssh-enable</i>. <br/> Let\'s do it, so we can use SSH to get access to our device.</p>\
 				<p class="tutorialCommand">\
-						Use NoVNC to run <i>ssh-enable</i> on the second device (openvz2). Press "Continue" if you did so.</p>',
+						Use NoVNC to run <i>ssh-enable</i> on the second device (container2). Press "Continue" if you did so.</p>',
 			skip_button: "Continue"
 			},
 			{

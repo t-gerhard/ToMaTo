@@ -29,7 +29,7 @@
 				
 			  },
 			text:	'<p class="tutorialExplanation">\
-						You see a topology where an OpenVZ device is connected to a switch, and the switch is connected to the internet.<br />\
+						You see a topology where a container device is connected to a switch, and the switch is connected to the internet.<br />\
 						Link emulation does not work when the connection is directly at an external network. Therefore, we need a switch in order to use link emulation.\
 					<p class="tutorialExplanation">\
 						All devices connected to a switch which is connected to to the internet will have a direct connection to the internet (no NAT router or similar).<br />\
@@ -57,7 +57,7 @@
 							1: {
 								parent: {
 									data: {
-										type: "openvz",
+										type: "container",
 									}
 								}	
 							}

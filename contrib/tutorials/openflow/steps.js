@@ -7,7 +7,7 @@
 	},
 	{
 		text: '<p class="tutorialExplanation">In this tutorial we will use the <i>OpenVSwitch</i> software to emulate an OpenFlow switch. It will behave like a hardware OpenFlow switch and support all OpenFlow commands. However it does not provide the same forwarding speed as a physical switch.</p>\
-		<p class="tutorialExplanation">OpenVSwitch is available as a KVM template, so you can find it directly in the menu.</p>\
+		<p class="tutorialExplanation">OpenVSwitch is available as a full-virtualization template, so you can find it directly in the menu.</p>\
 		<br/>\
 		<p class="tutorialCommand">Add an <i>OpenFlow Switch</i> to your topology.</p>',
 		trigger: function(event) {
@@ -16,7 +16,7 @@
 				component: "element",
 				phase: "end",
 				attrs: {
-					type: "kvmqm",
+					type: "full",
 					template: "openvswitch"
 				},
 			});
@@ -25,7 +25,7 @@
 	{
 		text: '<p class="tutorialExplanation">In this tutorial, we will modify the communication between the connected nodes. For this, you need to add three nodes.</p>\
 		<br/>\
-		<p class="tutorialCommand">Add 3 OpenVZ nodes around the switch and name them <i>node1</i>, <i>node2</i> and <i>node3</i></p>',
+		<p class="tutorialCommand">Add 3 container nodes around the switch and name them <i>node1</i>, <i>node2</i> and <i>node3</i></p>',
 		trigger: function(event) {
 			var data = getTutorialData();
 			if (! data.tmp1) data.tmp1 = 0;
@@ -35,7 +35,7 @@
 				component: "element",
 				phase: "end",
 				attrs: {
-					type: "openvz"
+					type: "container"
 				},
 			})) data.tmp1++;
 			if (compareToMask(event, {
@@ -74,7 +74,7 @@
 		}
 	},
 	{
-		text: '<p class="tutorialExplanation">To be able to ping between the nodes we have to configure their IP addresses. You could do that using the console of the nodes, but ToMaTo provides an easier way to configure interfaces on OpenVZ machines.</p>\
+		text: '<p class="tutorialExplanation">To be able to ping between the nodes we have to configure their IP addresses. You could do that using the console of the nodes, but ToMaTo provides an easier way to configure interfaces on container machines.</p>\
 		<p class="tutorialExplanation">Right-click on the network interfaces of the nodes and select configure. A configuration dialog will open and allow you to set the IPv4 address of the interface.</p>\
 		<p class="tutorialExplanation">Configure the following addresses on the nodes:\
 		<dl class="dl-horizontal">\
@@ -124,7 +124,7 @@
 		}
 	},
 	{
-		text: '<p class="tutorialExplanation">To be able to configure the switch later, we need to assign an IP address to it. Since the switch is based on KVM you cannot configure its interface using ToMaTo. Instead you can set the IP address by using the command <pre><tt>address 10.0.0.100</tt></pre> on the console of the switch. The switch will remember this address even after reboot. Click on continue when you are done.</p>\
+		text: '<p class="tutorialExplanation">To be able to configure the switch later, we need to assign an IP address to it. Since the switch is based on full virtualization you cannot configure its interface using ToMaTo. Instead you can set the IP address by using the command <pre><tt>address 10.0.0.100</tt></pre> on the console of the switch. The switch will remember this address even after reboot. Click on continue when you are done.</p>\
 		<br/>\
 		<p class="tutorialCommand">Set the IP address of the switch to <i>10.0.0.100</i>.</p>',
 		skip_button: 'Continue'
@@ -163,7 +163,7 @@
 				component: "element",
 				phase: "end",
 				attrs: {
-					type: "openvz",
+					type: "container",
 					template: "floodlight"
 				},
 			});

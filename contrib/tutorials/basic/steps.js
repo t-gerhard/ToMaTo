@@ -69,7 +69,7 @@
 						mask = {
 							attrs: {
 								state: "created",
-								type: "openvz"
+								type: "container"
 							},
 							component: "element",
 							operation: "create",
@@ -79,16 +79,16 @@
 					
 					  },
 					text:	'<p class = "tutorialCommand">\
-								To add a first device to your topology, click on OpenVZ (blue screen) \
+								To add a first device to your topology, select the Container element (blue screen) \
 								in \'Common elements\' in the menu, and then click somewhere in the workspace.</p>'
 					},
 					{
 					text:	'<p class="tutorialExplanation">\
-								Congratulations! You have placed your first OpenVZ device.<br />\
-								You can always identify OpenVZ devices by a blue screen.\
-								OpenVZ devices are virtual machines which use their host\'s kernel to operate, but have their own virtual file system.\
+								Congratulations! You have placed your first container device.<br />\
+								You can always identify container devices by a blue screen.\
+								Container-based virual machines use their host\'s kernel to operate, but have their own virtual file system, and their own processes.\
 								This makes them more efficient to run, but prohibits modifying the VM\'s kernel \
-								which also means you can only run Linux systems in OpenVZ devices.</p>\
+								which also means you can only run Linux systems in container devices.</p>\
 							<p class="tutorialExplanation">Did you notice the ? button, which just appeared in the top-right corner of this window?\
 								This leads you to a help page which tells you more about what you just did (Don\'t worry, it opens in a new browser tab).</p>',
 					help_page:'DeviceTypes',
@@ -127,7 +127,7 @@
 						mask = {
 							attrs: {
 								state: "created",
-								type: "kvmqm"
+								type: "full"
 							},
 							component: "element",
 							operation: "create",
@@ -137,16 +137,16 @@
 						
 					  },
 					text:	'<p class="tutorialExplanation">\
-								You will need more devices to get a whole topology. This time, let\'s create a KVM device.</p>\
+								You will need more devices to get a whole topology. This time, let\'s create a full-virtualization device.</p>\
 							<p class="tutorialCommand">\
-								Click KVM (green screen) in Common elements in the menu above, and the place it in the editor by\
+								Click "Full Virt." (green screen) in Common elements in the menu above, and the place it in the editor by\
 								clicking somewhere into the white.</p>'
 					},
 					{
 					text:	'<p class="tutorialExplanation">\
-								You just created a KVM device.\
-								KVM devices can be identified by a green screen.\
-								Contrary to OpenVZ, KVM devices run completely separated from their host systems.\
+								You just created a full-virtualization device.\
+								Full-virtualization devices can be identified by a green screen.\
+								Contrary to containers, fully virtualized VMs run completely separated from their host systems.\
 								This means that you can modify the kernel and/or use any operating system.</p>',
 					skip_button:'continue'
 					},
@@ -316,25 +316,25 @@
 						{
 						trigger:function(obj) {
 							
-							mask_openvz = {
+							mask_container = {
 								object: { data: {
-									type: "openvz"
+									type: "container"
 								}},
 								component: "element",
 								operation: "remove",
 								phase: "end"
 							};
 							
-							mask_kvmqm = {
+							mask_full = {
 								object: { data: {
-									type: "kvmqm"
+									type: "full"
 								}},
 								component: "element",
 								operation: "remove",
 								phase: "end"
 							};
 							
-							return compareToMask(obj,mask_openvz) || compareToMask(obj,mask_kvmqm);
+							return compareToMask(obj,mask_container) || compareToMask(obj,mask_full);
 							
 						  },
 						text:	'<p class="tutorialExplanation">\
@@ -347,25 +347,25 @@
 						{
 						trigger:function(obj) {
 							
-							mask_openvz = {
+							mask_container = {
 								object: { data: {
-									type: "openvz"
+									type: "container"
 								}},
 								component: "element",
 								operation: "remove",
 								phase: "end"
 							};
 							
-							mask_kvmqm = {
+							mask_full = {
 								object: { data: {
-									type: "kvmqm"
+									type: "full"
 								}},
 								component: "element",
 								operation: "remove",
 								phase: "end"
 							};
 							
-							return compareToMask(obj,mask_openvz) || compareToMask(obj,mask_kvmqm);
+							return compareToMask(obj,mask_container) || compareToMask(obj,mask_full);
 							
 						  },
 						text:	'<p class="tutorialCommand">\
