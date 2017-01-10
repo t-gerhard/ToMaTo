@@ -9,9 +9,10 @@
 			text:	'<p class="tutorialExplanation">\
 						Let\'s take a closer look at a connection.</p>\
 					<p class="tutorialExplanation">\
-						Every connection consits of two network interfaces and the connection itself.<br />\
+						Every connection consists of two network interfaces and the connection itself.<br />\
 						An interface is represented by a grey circle at a device. Here you can configure the device\'s network preferences (e.g., ip address).<br />\
-						The connection is represented by a blue square at its center. Here, you can configure the link (e.g., bandwidth, loss rate, etc).</p>\
+						The connection is represented by blue square at its center. Here, you can configure the link (e.g., bandwidth, loss rate, etc).<br/>\
+						The square changes its color depending on the nature of the connection: whether it connects elements inside a host, inside a single site, or over multiple sites. You can find more information in the \'Link statistics\' in the connection\'s right-click menu.</p>\
 					<p class="tutorialExplanation">\
 						The options available to a connection depend on the connected devices. The same is true for interfaces.</p>',
 			skip_button: 'Continue'
