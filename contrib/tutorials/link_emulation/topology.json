@@ -98,7 +98,7 @@
         "type": "openvz", 
         "attrs": {
           "profile": "normal", 
-          "name": "openvz1", 
+          "name": "container1",
           "site": null, 
           "_pos": {
             "y": 0.090909090909090912, 

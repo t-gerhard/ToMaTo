@@ -74,8 +74,8 @@
         "parent": null, 
         "attrs": {
           "profile": "normal", 
-          "name": "openvz2", 
-          "hostname": "openvz2", 
+          "name": "container2",
+          "hostname": "container2",
           "site": null, 
           "_pos": {
             "y": 0.042092427720118612, 
@@ -104,8 +104,8 @@
         "parent": null, 
         "attrs": {
           "profile": "normal", 
-          "name": "openvz1", 
-          "hostname": "openvz1", 
+          "name": "container1",
+          "hostname": "container1",
           "site": null, 
           "_pos": {
             "y": 0.036617975165374086, 

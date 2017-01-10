@@ -70,7 +70,7 @@
 							},					
 							1: {
 								data: {
-									type: "openvz_interface"
+									type: "container_interface"
 								}
 							}
 						}	
@@ -92,7 +92,7 @@
 							},					
 							0: {
 								data: {
-									type: "openvz_interface"
+									type: "container_interface"
 								}
 							}
 						}	

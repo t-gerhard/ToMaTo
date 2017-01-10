@@ -18,10 +18,10 @@
 		skip_button: 'Continue'
 	},
 	{
-		text: '<p class="tutorialExplanation">As first step we add two virtual machines to the topology. These virtual machines will use OpenVZ technology since we only want to run a simple program on it.<br/>\
+		text: '<p class="tutorialExplanation">As first step we add two virtual machines to the topology. These virtual machines will use container-based virtualization technology since we only want to run a simple program on it.<br/>\
 			Click on the blue computer icon on the right of the menu and then click into the work space to position that element. You can later move it by dragging the icon in the work space.<br/>\
 			You can move this tutorial window if it covers your work space.</p>\
-			<p class="tutorialCommand">Add two OpenVZ devices to your topology</p>',
+			<p class="tutorialCommand">Add two container devices to your topology</p>',
 		trigger: function(event) {
 			data = getTutorialData();
 			if (! data.tmp) data.tmp = 0;
@@ -30,7 +30,7 @@
 				component: "element",
 				phase: "end",
 				attrs: {
-					type: "openvz"
+					type: "container"
 				},
 				});
 			if(match) data.tmp++;
@@ -448,7 +448,7 @@ Note that you can not type any text into the consoles of these agents as the Rep
 		help_page: 'LinkEmulation'
 	},
 	{
-		text: '<p class="tutorialExplanation">Now we will add a delay of 2 seconds to a link and check if we can see the difference. Open the attributes of the link of one OpenVZ VM as you learned in the the first part. Enable link emulation and add a delay of 2000 ms on one of the directions.</p>\
+		text: '<p class="tutorialExplanation">Now we will add a delay of 2 seconds to a link and check if we can see the difference. Open the attributes of the link of one container VM as you learned in the the first part. Enable link emulation and add a delay of 2000 ms on one of the directions.</p>\
 <p class="tutorialCommand">Add 2 seconds delay to one link</p>',
 		trigger: function(event) {
 			var data = getTutorialData();
@@ -471,7 +471,7 @@ Note that you can not type any text into the consoles of these agents as the Rep
 		help_page: 'LinkEmulation'
 	},
 	{
-		text: '<p class="tutorialExplanation">You should see the delay when you send messages between your OpenVZ VMs. The delay should only exist in one direction.<br/>\
+		text: '<p class="tutorialExplanation">You should see the delay when you send messages between your container VMs. The delay should only exist in one direction.<br/>\
 Now you can play around with the settings a little. Maybe add some jitter to the connection. If you apply packet duplication or packet loss you can use the sequence numbers to check this functionality.</p>\
 <p class="tutorialCommand">Click continue when you want to continue</p>',
 		skip_button: 'Continue',
